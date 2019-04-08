@@ -24,7 +24,7 @@ args = vars(ap.parse_args())
 # load the image
 image = cv2.imread(args["image"])
 output = image.copy()
- 
+
 # pre-process the image for classification
 image = cv2.resize(image, (96, 96))
 image = image.astype("float") / 255.0
@@ -52,6 +52,8 @@ correct = "correct" if filename.rfind(label) != -1 else "incorrect"
 # build the label and draw the label on the image
 label = "{}: {:.2f}% ({})".format(label, proba[idx] * 100, correct)
 output = imutils.resize(output, width=400)
+# output = imutils.resize(output, width=800)
+
 cv2.putText(output, label, (10, 25),  cv2.FONT_HERSHEY_SIMPLEX,
 	0.7, (0, 255, 0), 2)
 
