@@ -57,7 +57,7 @@ for imagePath in imagePaths:
 	image = cv2.resize(image, (IMAGE_DIMS[1], IMAGE_DIMS[0]))
 	image = img_to_array(image)
 	data.append(image)
-
+ 
 	# extract the class label from the image path and update the
 	# labels list
 	label = imagePath.split(os.path.sep)[-2]
