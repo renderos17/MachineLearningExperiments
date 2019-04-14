@@ -9,6 +9,7 @@ matplotlib.use("Agg")
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam
 from keras.preprocessing.image import img_to_array
+from keras.utils import to_categorical
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 from pyimagesearch.smallervggnet import SmallerVGGNet
@@ -94,7 +95,7 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
 # train the network
 print("[INFO] training network...")
 H = model.fit_generator(
-	aug.flow(trainX, trainY, batch_size=BS),
+	aug.flow(to_categorical(trainX), to_categorical(trainY), batch_size=BS),
 	validation_data=(testX, testY),
 	steps_per_epoch=len(trainX) // BS,
 	epochs=EPOCHS, verbose=1)
